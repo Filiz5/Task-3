@@ -2,7 +2,7 @@ variable "myami" {
   type = map(string)
   default = {
     dev = "ami-04e5276ebb8451442"
-    prod  = "ami-06640050dc3f556bb"
+    prod  = "ami-06b21ccaeff8cd686"
     test   = "ami-08d4ac5b634553e16"
     staging   = "ami-08d4ac5b634553e16"
   }
