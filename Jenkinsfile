@@ -117,7 +117,7 @@ pipeline {
                 sh 'ansible-inventory -i ./ansible/inventory_aws_ec2.yml --graph'
                 sh """
                     export ANSIBLE_HOST_KEY_CHECKING=False
-                    cd Task-3/ansible
+                    cd ansible
                     ansible-playbook -i inventory_aws_ec2.yml -e "compose_dir=${env.WORKSPACE}/" --private-key=${WORKSPACE}/${ENVIRONMENT} ${ENVIRONMENT}.yml -vv
                 """
             }
