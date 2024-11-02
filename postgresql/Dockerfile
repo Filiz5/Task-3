@@ -1,5 +1,5 @@
 FROM postgres
 
-COPY ./init.sql /docker-entrypoint-initdb.d/
+COPY ./postgresql/init.sql /docker-entrypoint-initdb.d/
 
-EXPOSE 5432
+EXPOSE 5432 
