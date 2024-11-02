@@ -1,0 +1,34 @@
+- name: Setup Web Servers Based on Environment
+  hosts: _test_server
+  become: yes
+  remote_user: ubuntu
+
+  tasks:
+    - name: Update apt repository cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Create index.html with message
+      ansible.builtin.copy:
+        dest: /var/www/html/index.html
+        content: |
+          <html>
+          <head><title>Techpro Education AWS-DevOps Team</title></head>
+          <body>
+            <h1>Merhaba Arkadaslar</h1>
+            <p>Techpro Education AWS-DevOps Team olarak Task-2 basarili sonuclanmistir. Melis..</p>
+          </body>
+          </html>
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
